@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Army
+  - Hero
+  - Unit
+  - Mage
+  - Swordsman
+  - Archer
   layers:
   - Default
   - TransparentFX
