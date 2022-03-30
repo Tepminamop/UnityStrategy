@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ public abstract class Hero : Unit, IObservable
         this._initiative = initiative;
         this._leadership = leadership;
         this._observers = new List<IObserver>();
-        this._id = Unit._counter++;
+        this._id = _counter++;
         this._armyNumber = armyNumber;
     }
 

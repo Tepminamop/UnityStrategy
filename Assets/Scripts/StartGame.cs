@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class StartGame : MonoBehaviour
 {
-    [SerializeField] GameObject _go_hero1;
-    [SerializeField] GameObject _go_hero2;
-    [SerializeField] GameObject _go_army1;
-    [SerializeField] GameObject _go_army2;
+    [SerializeField] private GameObject _go_hero1;
+    [SerializeField] private GameObject _go_hero2;
+    [SerializeField] private GameObject _go_army1;
+    [SerializeField] private GameObject _go_army2;
 
     private void Awake()
     {
@@ -56,7 +56,5 @@ public class StartGame : MonoBehaviour
                     break;
             }
         }
-
-        //this._go_army1.GetComponent<Army>().GetDamage(1000);
     }
 }

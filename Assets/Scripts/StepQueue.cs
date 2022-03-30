@@ -109,7 +109,6 @@ public class StepQueue : MonoBehaviour
                 break;
             }
         }
-        //_objectsDisplayed[_unitsSteps[_curUnit]._id].GetComponent<SpriteRenderer>()
     }
 
     private void Update()
@@ -128,7 +127,6 @@ public class StepQueue : MonoBehaviour
                     Debug.Log(_curUnit);
                     Debug.Log(_unitsSteps[_curUnit]._attackType);
                     Debug.Log("id" + _unitsSteps[_curUnit]._id);
-
                     if (targets.Find(x => x == chooseUnit))
                     {
                         if (_unitsSteps[_curUnit]._attackType != AttackType.AOE)
@@ -137,9 +135,13 @@ public class StepQueue : MonoBehaviour
                         }
                         else
                         {
-                            for (int i = 0; i < targets.Count; i++)
+                            if (_unitsSteps[_curUnit]._id == 1)
                             {
-                                targets[i].GetDamage(_unitsSteps[_curUnit]._damage);//add damage composite
+                                _armyLeft.GetDamage(_unitsSteps[_curUnit]._damage);
+                            }
+                            else
+                            {
+                                _armyRight.GetDamage(_unitsSteps[_curUnit]._damage);
                             }
                         }
                         Debug.Log("changeStep()");
@@ -158,5 +160,4 @@ public class StepQueue : MonoBehaviour
             }
         }
     }
-
 }
