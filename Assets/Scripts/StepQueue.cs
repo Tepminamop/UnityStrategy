@@ -11,7 +11,7 @@ public class StepQueue : MonoBehaviour
     [SerializeField] private GameObject _go_armyRight;
     [SerializeField] private GameObject _go_armyLeft;
     [SerializeField] private List<Unit> _unitsSteps;
-    [SerializeField] private int _curUnit;
+    [SerializeField] private int _curUnit = 0;
     [SerializeField] public static Dictionary<int, GameObject> _objectsDisplayed;
 
     private void Start()
@@ -26,8 +26,21 @@ public class StepQueue : MonoBehaviour
             _unitsSteps.Add(_armyRight.GetUnits()[i]);
         }
         _unitsSteps.Sort();
+        foreach (Unit unit in _unitsSteps)
+        {
+            Debug.Log(unit._initiative);
+        }
 
         CreateObjects();
+
+        foreach (Transform obj in _objectsDisplayed[_unitsSteps[_curUnit]._id].transform)
+        {
+            if (obj.tag == "ChosenUnit")
+            {
+                obj.gameObject.SetActive(true);
+                break;
+            }
+        }
     }
 
     private void CreateObjects()
@@ -36,8 +49,6 @@ public class StepQueue : MonoBehaviour
 
         foreach (Transform obj in _go_armyLeft.transform)
         {
-            Debug.Log(obj.gameObject.tag);
-            Debug.Log(obj.gameObject.GetComponent<Unit>()._id);
             _objectsDisplayed.Add(obj.gameObject.GetComponent<Unit>()._id, obj.gameObject);
         }
 
@@ -89,6 +100,16 @@ public class StepQueue : MonoBehaviour
         do {
             _curUnit = (_curUnit + 1) % _unitsSteps.Count;
         } while (!_unitsSteps[_curUnit]._isAlive);
+
+        foreach (Transform obj in _objectsDisplayed[_unitsSteps[_curUnit]._id].transform)
+        {
+            if (obj.tag == "ChosenUnit")
+            {
+                obj.gameObject.SetActive(true);
+                break;
+            }
+        }
+        //_objectsDisplayed[_unitsSteps[_curUnit]._id].GetComponent<SpriteRenderer>()
     }
 
     private void Update()
@@ -118,10 +139,18 @@ public class StepQueue : MonoBehaviour
                         {
                             for (int i = 0; i < targets.Count; i++)
                             {
-                                targets[i].GetDamage(_unitsSteps[_curUnit]._damage);//damage composite
+                                targets[i].GetDamage(_unitsSteps[_curUnit]._damage);//add damage composite
                             }
                         }
                         Debug.Log("changeStep()");
+                        foreach (Transform obj in _objectsDisplayed[_unitsSteps[_curUnit]._id].transform)
+                        {
+                            if (obj.tag == "ChosenUnit")
+                            {
+                                obj.gameObject.SetActive(false);
+                                break;
+                            }
+                        }
                         ChangeStep();
                     }
                 }

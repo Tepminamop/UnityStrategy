@@ -12,6 +12,7 @@ TagManager:
   - Archer
   - Hero1
   - Hero2
+  - ChosenUnit
   layers:
   - Default
   - TransparentFX
