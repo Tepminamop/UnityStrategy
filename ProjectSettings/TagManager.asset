@@ -11,6 +11,7 @@ TagManager:
   - Swordsman
   - Archer
   - Hero1
+  - Hero2
   layers:
   - Default
   - TransparentFX
