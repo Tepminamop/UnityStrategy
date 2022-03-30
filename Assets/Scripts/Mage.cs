@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mage : Unit
 {
-    public void MakeMage(int hp, int initiative, int damage, IObservable hero)
+    public void MakeMage(int hp, int initiative, int damage, IObservable hero, int armyNumber)
     {
         this._isAlive = true;
         this._attackType = AttackType.AOE;
@@ -12,11 +12,8 @@ public class Mage : Unit
         this._damage = damage;
         this._initiative = initiative;
         this._hero = hero;
+        this._armyNumber = armyNumber;
+        this._id = Unit._counter++;
         _hero.RegisterObserver(this);
     }
-    //public Mage(int hp, int initiative, int damage, IObservable hero)
-    //    : base(hp, initiative, damage, hero)
-    //{
-    //    this._attackType = AttackType.AOE;
-    //}
 }
