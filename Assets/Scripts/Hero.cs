@@ -19,11 +19,12 @@ public abstract class Hero : Unit, IObservable
         this._id = Unit._counter++;
     }
 
-    public new void Dead()
+    public override void Dead()
     {
         this._hp = 0;
         this._initiative = 0;
         this._isAlive = false;
+        StepQueue._objectsDisplayed[this._id].SetActive(false);
         this.NotifyObservers();
     }
 

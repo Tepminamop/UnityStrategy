@@ -98,7 +98,7 @@ public class StepQueue : MonoBehaviour
             Debug.Log("mouse");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
-            if (!(hit.transform.GetComponent<BoxCollider2D>() is null))
+            if (hit)
             {
                 Unit chooseUnit = hit.transform.gameObject.GetComponent<Unit>();
                 List<Unit> targets = TargetsFind(_unitsSteps[_curUnit]);
@@ -118,7 +118,7 @@ public class StepQueue : MonoBehaviour
                         {
                             for (int i = 0; i < targets.Count; i++)
                             {
-                                targets[i].GetDamage(_unitsSteps[_curUnit]._damage);
+                                targets[i].GetDamage(_unitsSteps[_curUnit]._damage);//damage composite
                             }
                         }
                         Debug.Log("changeStep()");

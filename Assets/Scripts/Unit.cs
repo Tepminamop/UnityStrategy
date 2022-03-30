@@ -48,7 +48,7 @@ public abstract class Unit : MonoBehaviour, IObserver, IComparable
 
     }
 
-    public void Dead()
+    public virtual void Dead()
     {
         this._hp = 0;
         this._initiative = 0;
