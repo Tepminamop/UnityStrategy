@@ -6,15 +6,15 @@ public sealed class HeroSwordsman : Hero
 {
 	private static HeroSwordsman instance = null;
 
-	private void Start()
+	private void Awake()
 	{
-		if (instance == null)
+		if (instance is null)
 		{
 			instance = this;
 		}
 		else if (instance == this)
 		{
-			Destroy(gameObject); // ׃האכÿול מבתוךע
+			Destroy(gameObject);
 		}
 
 		DontDestroyOnLoad(gameObject);

@@ -14,8 +14,8 @@ public class StartGame : MonoBehaviour
         _go_hero1.GetComponent<HeroSwordsman>().SetCharachteristics(AttackType.MELEE, 200, 50, 5, 60);
         _go_hero2.GetComponent<HeroRanger>().SetCharachteristics(AttackType.RANGE, 200, 50, 5, 60);
 
-        this._go_army1.GetComponent<Army>().AddUnit(_go_hero1.GetComponent<Hero>());
-        this._go_army2.GetComponent<Army>().AddUnit(_go_hero2.GetComponent<Hero>());
+        this._go_army1.GetComponent<Army>().AddUnit(_go_hero1.GetComponent<HeroSwordsman>());
+        this._go_army2.GetComponent<Army>().AddUnit(_go_hero2.GetComponent<HeroRanger>());
 
         foreach (Transform obj in this._go_army1.transform)
         {
@@ -24,7 +24,6 @@ public class StartGame : MonoBehaviour
             {
                 case "Archer":
                     obj.GetComponent<Archer>().MakeArcher(90, 60, 40, _go_hero1.GetComponent<Hero>(), 1);
-
                     this._go_army1.GetComponent<Army>().AddUnit(obj.GetComponent<Archer>());
                     break;
                 case "Swordsman":

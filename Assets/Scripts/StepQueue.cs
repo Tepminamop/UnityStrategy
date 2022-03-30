@@ -8,15 +8,14 @@ public class StepQueue : MonoBehaviour
 {
     [SerializeField] private Army _armyLeft;
     [SerializeField] private Army _armyRight;
-    [SerializeField] private GameObject _GOarmyRight;
-    [SerializeField] private GameObject _GOarmyLeft;
+    [SerializeField] private GameObject _go_armyRight;
+    [SerializeField] private GameObject _go_armyLeft;
     [SerializeField] private List<Unit> _unitsSteps;
     [SerializeField] private int _curUnit;
+    [SerializeField] public static Dictionary<int, GameObject> _objectsDisplayed;
 
-
-    void Start()
+    private void Start()
     {
-
         _unitsSteps = new List<Unit>(_armyLeft.GetUnits().Count + _armyRight.GetUnits().Count);
         for (int i = 0; i < _armyLeft.GetUnits().Count; i++)
         {
@@ -27,7 +26,25 @@ public class StepQueue : MonoBehaviour
             _unitsSteps.Add(_armyRight.GetUnits()[i]);
         }
         _unitsSteps.Sort();
-       
+
+        CreateObjects();
+    }
+
+    private void CreateObjects()
+    {
+        _objectsDisplayed = new Dictionary<int, GameObject>();
+
+        foreach (Transform obj in _go_armyLeft.transform)
+        {
+            Debug.Log(obj.gameObject.tag);
+            Debug.Log(obj.gameObject.GetComponent<Unit>()._id);
+            _objectsDisplayed.Add(obj.gameObject.GetComponent<Unit>()._id, obj.gameObject);
+        }
+
+        foreach (Transform obj in _go_armyRight.transform)
+        {
+            _objectsDisplayed.Add(obj.gameObject.GetComponent<Unit>()._id, obj.gameObject);
+        }
     }
 
     private List<Unit> TargetsFind(Unit unit)
@@ -35,7 +52,6 @@ public class StepQueue : MonoBehaviour
         List<Unit> enemys;
         if (unit._isAlive)
         {
-
             if (unit._armyNumber == 1)
             {
                 enemys = new List<Unit>(_armyRight.GetUnits());
@@ -61,12 +77,14 @@ public class StepQueue : MonoBehaviour
                     enemys = enemys.FindAll(x => x._isAlive == true);
                     break;
             }
+
             return enemys;
         }
+
         return null;
     }
 
-    private void changeStep()
+    private void ChangeStep()
     {
         do {
             _curUnit = (_curUnit + 1) % _unitsSteps.Count;
@@ -75,22 +93,21 @@ public class StepQueue : MonoBehaviour
 
     private void Update()
     {
-
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("mouse");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
-            if (hit.transform.GetComponent<BoxCollider2D>())
+            if (!(hit.transform.GetComponent<BoxCollider2D>() is null))
             {
-
-                string tag = hit.transform.tag;
                 Unit chooseUnit = hit.transform.gameObject.GetComponent<Unit>();
                 List<Unit> targets = TargetsFind(_unitsSteps[_curUnit]);
                 if (targets != null)
                 {
                     Debug.Log(_curUnit);
                     Debug.Log(_unitsSteps[_curUnit]._attackType);
-                    Debug.Log("id"+_unitsSteps[_curUnit]._id);
+                    Debug.Log("id" + _unitsSteps[_curUnit]._id);
+
                     if (targets.Find(x => x == chooseUnit))
                     {
                         if (_unitsSteps[_curUnit]._attackType != AttackType.AOE)
@@ -99,24 +116,16 @@ public class StepQueue : MonoBehaviour
                         }
                         else
                         {
-                            for (int i=0;i< targets.Count;i++)
+                            for (int i = 0; i < targets.Count; i++)
                             {
                                 targets[i].GetDamage(_unitsSteps[_curUnit]._damage);
                             }
                         }
                         Debug.Log("changeStep()");
-                        changeStep();
-                    }
-                   
-                    switch (tag)
-                    {
-                        case "Hero":
-                            Debug.Log("Dead");
-                            hit.transform.GetComponent<Hero>().GetDamage(1000);
-                            break;
+                        ChangeStep();
                     }
                 }
-                Debug.Log("count"+targets.Count);
+                Debug.Log("count" + targets.Count);
             }
         }
     }

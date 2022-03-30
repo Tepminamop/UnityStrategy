@@ -562,6 +562,8 @@ MonoBehaviour:
   _initiative: 0
   _damage: 0
   _isAlive: 0
+  _armyNumber: 0
+  _id: 0
 --- !u!1001 &798151864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -875,6 +877,8 @@ MonoBehaviour:
   _initiative: 0
   _damage: 0
   _isAlive: 0
+  _armyNumber: 0
+  _id: 0
 --- !u!1 &1288731026
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,6 +982,8 @@ MonoBehaviour:
   _initiative: 0
   _damage: 0
   _isAlive: 0
+  _armyNumber: 0
+  _id: 0
 --- !u!1 &1466242408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1040,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 250.00002
       objectReference: {fileID: 0}
     - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1054,7 +1064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1062,7 +1072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1105,6 +1115,8 @@ MonoBehaviour:
   _initiative: 0
   _damage: 0
   _isAlive: 0
+  _armyNumber: 0
+  _id: 0
   _leadership: 0
 --- !u!1 &1602099496
 GameObject:
@@ -1116,7 +1128,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1602099497}
   - component: {fileID: 1602099498}
-  - component: {fileID: 1602099499}
   - component: {fileID: 1602099500}
   m_Layer: 0
   m_Name: Game
@@ -1136,10 +1147,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1558837428}
+  - {fileID: 4182315543347485107}
   - {fileID: 1638532515}
   - {fileID: 2079089084}
-  - {fileID: 4182315543347485107}
-  - {fileID: 1558837428}
   m_Father: {fileID: 1288731027}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1164,18 +1175,6 @@ MonoBehaviour:
   _go_hero2: {fileID: 1558837429}
   _go_army1: {fileID: 1638532514}
   _go_army2: {fileID: 2079089083}
---- !u!114 &1602099499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1602099496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47fb1131e7c2dfa4e8f6cce17f0bbedb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1602099500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1190,8 +1189,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _armyLeft: {fileID: 1638532516}
   _armyRight: {fileID: 2079089085}
-  _GOarmyRight: {fileID: 0}
-  _GOarmyLeft: {fileID: 0}
+  _go_armyRight: {fileID: 2079089083}
+  _go_armyLeft: {fileID: 1638532514}
+  _unitsSteps: []
+  _curUnit: 0
 --- !u!1 &1638532514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,7 +1227,7 @@ RectTransform:
   - {fileID: 8312335175521052056}
   - {fileID: 968115866}
   m_Father: {fileID: 1602099497}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1250,6 +1251,8 @@ MonoBehaviour:
   _initiative: 0
   _damage: 0
   _isAlive: 0
+  _armyNumber: 0
+  _id: 0
   _units: []
 --- !u!1 &1843255859
 GameObject:
@@ -1452,7 +1455,7 @@ RectTransform:
   - {fileID: 1955111167}
   - {fileID: 1133651675}
   m_Father: {fileID: 1602099497}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1476,6 +1479,8 @@ MonoBehaviour:
   _initiative: 0
   _damage: 0
   _isAlive: 0
+  _armyNumber: 0
+  _id: 0
   _units: []
 --- !u!1 &2127951456 stripped
 GameObject:
@@ -1504,6 +1509,8 @@ MonoBehaviour:
   _initiative: 0
   _damage: 0
   _isAlive: 0
+  _armyNumber: 0
+  _id: 0
 --- !u!1001 &1384329457517376153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1631,7 +1638,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 250.00002
       objectReference: {fileID: 0}
     - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1651,15 +1662,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1702,6 +1713,8 @@ MonoBehaviour:
   _initiative: 0
   _damage: 0
   _isAlive: 0
+  _armyNumber: 0
+  _id: 0
   _leadership: 0
 --- !u!1001 &8312335175521052055
 PrefabInstance:
