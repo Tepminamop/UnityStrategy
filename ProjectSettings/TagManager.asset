@@ -10,6 +10,7 @@ TagManager:
   - Mage
   - Swordsman
   - Archer
+  - Hero1
   layers:
   - Default
   - TransparentFX

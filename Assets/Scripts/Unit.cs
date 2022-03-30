@@ -31,20 +31,6 @@ public abstract class Unit : MonoBehaviour, IObserver
     [SerializeField] protected internal bool _isAlive;
     [SerializeField] protected internal IObservable _hero;
 
-    //public Unit(int hp, int initiative, int damage, IObservable hero)
-    //{
-    //    this._hp = hp;
-    //    this._damage = damage;
-    //    this._initiative = initiative;
-    //    this._hero = hero;
-    //    _hero.RegisterObserver(this);
-    //}
-
-    //public Unit()
-    //{
-
-    //}
-
     public virtual void GetDamage(int damage)
     {
         this._hp -= damage;

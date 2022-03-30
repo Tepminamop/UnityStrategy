@@ -11,7 +11,7 @@ public class Army : Unit
         return this._units;
     }
 
-    public void addUnit(Unit _unit)
+    public void AddUnit(Unit _unit)
     {
         this._units.Add(_unit);
     }

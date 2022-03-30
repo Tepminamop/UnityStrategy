@@ -14,9 +14,4 @@ public class Mage : Unit
         this._hero = hero;
         _hero.RegisterObserver(this);
     }
-    //public Mage(int hp, int initiative, int damage, IObservable hero)
-    //    : base(hp, initiative, damage, hero)
-    //{
-    //    this._attackType = AttackType.AOE;
-    //}
 }

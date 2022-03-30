@@ -12,16 +12,6 @@ public sealed class Hero : MonoBehaviour, IObservable
     [SerializeField] private int _leadership;
     [SerializeField] private List<IObserver> _observers;
 
-    //public Hero(AttackType attackType, int hp, int initiative, int leadership, int damage)
-    //{
-    //    this._hp = hp;
-    //    this._damage = damage;
-    //    this._attackType = attackType;
-    //    this._initiative = initiative;
-    //    this._leadership = leadership;
-    //    this._observers = new List<IObserver>();
-    //}
-
     public void SetCharachteristics(AttackType attackType, int hp, int initiative, int leadership, int damage)
     {
         this._isAlive = true;
