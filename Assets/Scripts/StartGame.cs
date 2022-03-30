@@ -11,8 +11,8 @@ public class StartGame : MonoBehaviour
 
     private void Awake()
     {
-        _go_hero1.GetComponent<Hero>().SetCharachteristics(AttackType.MELEE, 200, 50, 5, 60);
-        _go_hero2.GetComponent<Hero>().SetCharachteristics(AttackType.MELEE, 200, 50, 5, 60);
+        _go_hero1.GetComponent<HeroSwordsman>().SetCharachteristics(AttackType.MELEE, 200, 50, 5, 60);
+        _go_hero2.GetComponent<HeroRanger>().SetCharachteristics(AttackType.RANGE, 200, 50, 5, 60);
 
         foreach (Transform obj in this._go_army1.transform)
         {

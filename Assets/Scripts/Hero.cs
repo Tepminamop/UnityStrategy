@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class Hero : MonoBehaviour, IObservable
+public abstract class Hero : MonoBehaviour, IObservable
 {
-    [SerializeField] private AttackType _attackType;
-    [SerializeField] private int _hp;
-    [SerializeField] private int _initiative;
-    [SerializeField] private int _damage;
-    [SerializeField] private bool _isAlive;
-    [SerializeField] private int _leadership;
-    [SerializeField] private List<IObserver> _observers;
+    [SerializeField] protected internal AttackType _attackType;
+    [SerializeField] protected internal int _hp;
+    [SerializeField] protected internal int _initiative;
+    [SerializeField] protected internal int _damage;
+    [SerializeField] protected internal bool _isAlive;
+    [SerializeField] protected internal int _leadership;
+    [SerializeField] protected internal List<IObserver> _observers;
 
     public void SetCharachteristics(AttackType attackType, int hp, int initiative, int leadership, int damage)
     {

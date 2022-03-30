@@ -964,6 +964,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 980161880485043778, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
   m_PrefabInstance: {fileID: 1558837427}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1558837430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558837429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce59423b79921684fabc80409007ec5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackType: 0
+  _hp: 0
+  _initiative: 0
+  _damage: 0
+  _isAlive: 0
+  _leadership: 0
 --- !u!1 &1602099496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,14 +1486,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: King_Idle_1
       objectReference: {fileID: 0}
-    - target: {fileID: 980161880485043778, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 980161880485043778, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
-      propertyPath: m_TagString
-      value: Hero
-      objectReference: {fileID: 0}
     - target: {fileID: 980161880485043789, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1532,6 +1542,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 980161880485043778, guid: 4fdcafb12cfbf724e92f7695cfdbc4d5, type: 3}
   m_PrefabInstance: {fileID: 4182315543347485106}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4182315543347485109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4182315543347485108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3232dbc7b022f5c48a2bf32a95093c22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackType: 0
+  _hp: 0
+  _initiative: 0
+  _damage: 0
+  _isAlive: 0
+  _leadership: 0
 --- !u!1001 &8312335175521052055
 PrefabInstance:
   m_ObjectHideFlags: 0
