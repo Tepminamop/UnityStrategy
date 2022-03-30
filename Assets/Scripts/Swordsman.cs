@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Swordsman : Unit
 {
-    public void MakeSwordsman(int hp, int initiative, int damage, IObservable hero)
+    public void MakeSwordsman(int hp, int initiative, int damage, IObservable hero,int armyNumber)
     {
         this._isAlive = true;
         this._attackType = AttackType.MELEE;
@@ -12,6 +12,8 @@ public class Swordsman : Unit
         this._damage = damage;
         this._initiative = initiative;
         this._hero = hero;
+        this._armyNumber = armyNumber;
+        this._id = Unit._counter++;
         _hero.RegisterObserver(this);
     }
 }

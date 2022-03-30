@@ -14,21 +14,25 @@ public class StartGame : MonoBehaviour
         _go_hero1.GetComponent<Hero>().SetCharachteristics(AttackType.MELEE, 200, 50, 5, 60);
         _go_hero2.GetComponent<Hero>().SetCharachteristics(AttackType.MELEE, 200, 50, 5, 60);
 
+        this._go_army1.GetComponent<Army>().AddUnit(_go_hero1.GetComponent<Hero>());
+        this._go_army2.GetComponent<Army>().AddUnit(_go_hero2.GetComponent<Hero>());
+
         foreach (Transform obj in this._go_army1.transform)
         {
             string tag = obj.tag;
             switch (tag)
             {
                 case "Archer":
-                    obj.GetComponent<Archer>().MakeArcher(90, 60, 40, _go_hero1.GetComponent<Hero>());
+                    obj.GetComponent<Archer>().MakeArcher(90, 60, 40, _go_hero1.GetComponent<Hero>(), 1);
+
                     this._go_army1.GetComponent<Army>().AddUnit(obj.GetComponent<Archer>());
                     break;
                 case "Swordsman":
-                    obj.GetComponentInChildren<Swordsman>().MakeSwordsman(50, 50, 150, _go_hero1.GetComponent<Hero>());
+                    obj.GetComponentInChildren<Swordsman>().MakeSwordsman(50, 50, 150, _go_hero1.GetComponent<Hero>(), 1);
                     this._go_army1.GetComponent<Army>().AddUnit(obj.GetComponent<Swordsman>());
                     break;
                 case "Mage":
-                    obj.GetComponent<Mage>().MakeMage(30, 100, 40, _go_hero1.GetComponent<Hero>());
+                    obj.GetComponent<Mage>().MakeMage(30, 100, 40, _go_hero1.GetComponent<Hero>(), 1);
                     this._go_army1.GetComponent<Army>().AddUnit(obj.GetComponent<Mage>());
                     break;
             }
@@ -40,15 +44,15 @@ public class StartGame : MonoBehaviour
             switch (tag)
             {
                 case "Archer":
-                    obj.GetComponent<Archer>().MakeArcher(90, 60, 40, _go_hero2.GetComponent<Hero>());
+                    obj.GetComponent<Archer>().MakeArcher(90, 60, 40, _go_hero2.GetComponent<Hero>(), 2);
                     this._go_army2.GetComponent<Army>().AddUnit(obj.GetComponent<Archer>());
                     break;
                 case "Swordsman":
-                    obj.GetComponentInChildren<Swordsman>().MakeSwordsman(50, 50, 150, _go_hero2.GetComponent<Hero>());
+                    obj.GetComponentInChildren<Swordsman>().MakeSwordsman(50, 50, 150, _go_hero2.GetComponent<Hero>(), 2);
                     this._go_army2.GetComponent<Army>().AddUnit(obj.GetComponent<Swordsman>());
                     break;
                 case "Mage":
-                    obj.GetComponent<Mage>().MakeMage(30, 100, 40, _go_hero2.GetComponent<Hero>());
+                    obj.GetComponent<Mage>().MakeMage(30, 100, 40, _go_hero2.GetComponent<Hero>(), 2);
                     this._go_army2.GetComponent<Army>().AddUnit(obj.GetComponent<Mage>());
                     break;
             }
