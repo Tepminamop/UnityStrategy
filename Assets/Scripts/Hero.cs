@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class Hero : Unit, IObservable
+public abstract class Hero : Unit, IObservable
 {
-    
     [SerializeField] private int _leadership;
     [SerializeField] private List<IObserver> _observers;
     

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 980161880485043788}
   - component: {fileID: 980161880485043779}
   - component: {fileID: 7972109309040854367}
-  - component: {fileID: 274872647886546048}
   m_Layer: 0
   m_Name: Hero_Idle
   m_TagString: Hero
@@ -131,21 +130,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.20724049, y: 0.5535545}
   m_EdgeRadius: 0
---- !u!114 &274872647886546048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980161880485043778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597f23ff9e7355241b419c8363e4f4cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackType: 0
-  _hp: 0
-  _initiative: 0
-  _damage: 0
-  _isAlive: 0
-  _leadership: 0
