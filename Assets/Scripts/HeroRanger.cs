@@ -4,12 +4,31 @@ using UnityEngine;
 
 public sealed class HeroRanger : Hero
 {
-    [SerializeField] private static HeroRanger _heroRanger;
+	private static HeroRanger instance = null;
 
-    public static HeroRanger GetInstance()
-    {
-        if (_heroRanger == null)
-            _heroRanger = new HeroRanger();
-        return _heroRanger;
-    }
+	private void Start()
+	{
+		if (instance == null)
+		{
+			instance = this;
+		}
+		else if (instance == this)
+		{
+			Destroy(gameObject); // ׃האכÿול מבתוךע
+		}
+
+		DontDestroyOnLoad(gameObject);
+
+		InitializeManager();
+	}
+
+	private void InitializeManager()
+	{
+
+	}
+
+	public HeroRanger GetInstance()
+	{
+		return instance;
+	}
 }

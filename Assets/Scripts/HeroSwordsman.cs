@@ -4,12 +4,31 @@ using UnityEngine;
 
 public sealed class HeroSwordsman : Hero
 {
-    [SerializeField] private static HeroSwordsman _heroSwordsman;
+	private static HeroSwordsman instance = null;
 
-    public static HeroSwordsman GetInstance()
+	private void Start()
+	{
+		if (instance == null)
+		{
+			instance = this;
+		}
+		else if (instance == this)
+		{
+			Destroy(gameObject); // ׃האכÿול מבתוךע
+		}
+
+		DontDestroyOnLoad(gameObject);
+
+		InitializeManager();
+	}
+
+    private void InitializeManager()
     {
-        if (_heroSwordsman == null)
-            _heroSwordsman = new HeroSwordsman();
-        return _heroSwordsman;
+        
+    }
+
+	public HeroSwordsman GetInstance()
+    {
+		return instance;
     }
 }

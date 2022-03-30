@@ -4,12 +4,31 @@ using UnityEngine;
 
 public sealed class HeroMage : Hero
 {
-    [SerializeField] private static HeroMage _heroMage;
+	private static HeroMage instance = null;
 
-    public static HeroMage GetInstance()
-    {
-        if (_heroMage == null)
-            _heroMage = new HeroMage();
-        return _heroMage;
-    }
+	private void Start()
+	{
+		if (instance == null)
+		{
+			instance = this;
+		}
+		else if (instance == this)
+		{
+			Destroy(gameObject); // ׃האכÿול מבתוךע
+		}
+
+		DontDestroyOnLoad(gameObject);
+
+		InitializeManager();
+	}
+
+	private void InitializeManager()
+	{
+
+	}
+
+	public HeroMage GetInstance()
+	{
+		return instance;
+	}
 }
