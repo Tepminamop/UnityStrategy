@@ -22,7 +22,7 @@ public enum AttackType
     RANGE
 }
 
-public abstract class Unit : MonoBehaviour, IObserver
+public abstract class Unit : MonoBehaviour, IObserver, IComparable
 {
     [SerializeField] protected internal AttackType _attackType;
     [SerializeField] protected internal int _hp;
@@ -30,6 +30,11 @@ public abstract class Unit : MonoBehaviour, IObserver
     [SerializeField] protected internal int _damage;
     [SerializeField] protected internal bool _isAlive;
     [SerializeField] protected internal IObservable _hero;
+    [SerializeField] protected internal int _armyNumber;
+    [SerializeField] protected internal int _id;
+    [SerializeField] protected static internal int _counter = 0;
+
+
 
     public virtual void GetDamage(int damage)
     {
@@ -50,7 +55,7 @@ public abstract class Unit : MonoBehaviour, IObserver
         this._hp = 0;
         this._initiative = 0;
         this._isAlive = false;
-        this._hero.RemoveObserver(this);
+        if(this._id >1) this._hero.RemoveObserver(this);
     }
 
     public void LowMorale()
@@ -61,5 +66,20 @@ public abstract class Unit : MonoBehaviour, IObserver
     public void Change(object ob)
     {
         this.LowMorale();
+    }
+
+    public int CompareTo(object obj)
+    {
+        return -this._initiative.CompareTo(((Unit)obj)._initiative);
+    }
+
+    public static bool operator ==(Unit unit1, Unit unit2)
+    {
+        return unit1._id == unit2._id;
+    }
+
+    public static bool operator !=(Unit unit1, Unit unit2)
+    {
+        return unit1._id != unit2._id;
     }
 }

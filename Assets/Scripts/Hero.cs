@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Hero : MonoBehaviour, IObservable
+public abstract class Hero : Unit, IObservable
 {
-    [SerializeField] protected internal AttackType _attackType;
-    [SerializeField] protected internal int _hp;
-    [SerializeField] protected internal int _initiative;
-    [SerializeField] protected internal int _damage;
-    [SerializeField] protected internal bool _isAlive;
-    [SerializeField] protected internal int _leadership;
-    [SerializeField] protected internal List<IObserver> _observers;
-
+    [SerializeField] private int _leadership;
+    [SerializeField] private List<IObserver> _observers;
+    
     public void SetCharachteristics(AttackType attackType, int hp, int initiative, int leadership, int damage)
     {
         this._isAlive = true;
@@ -21,23 +16,10 @@ public abstract class Hero : MonoBehaviour, IObservable
         this._initiative = initiative;
         this._leadership = leadership;
         this._observers = new List<IObserver>();
+        this._id = Unit._counter++;
     }
 
-    public void GetDamage(int damage)
-    {
-        this._hp -= damage;
-        if (this._hp <= 0)
-        {
-            this.Dead();
-        }
-    }
-
-    public void Attack()
-    {
-
-    }
-
-    public void Dead()
+    public new void Dead()
     {
         this._hp = 0;
         this._initiative = 0;
