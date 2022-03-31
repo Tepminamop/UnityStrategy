@@ -13,7 +13,7 @@ public class Mage : Unit
         this._initiative = initiative;
         this._hero = hero;
         this._armyNumber = armyNumber;
-        this._id = Unit._counter++;
+        this._id = _counter++;
         _hero.RegisterObserver(this);
     }
 }

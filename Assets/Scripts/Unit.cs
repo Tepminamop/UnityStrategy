@@ -34,8 +34,6 @@ public abstract class Unit : MonoBehaviour, IObserver, IComparable
     [SerializeField] protected internal int _id;
     [SerializeField] protected static internal int _counter = 0;
 
-
-
     public virtual void GetDamage(int damage)
     {
         this._hp -= damage;
@@ -50,12 +48,13 @@ public abstract class Unit : MonoBehaviour, IObserver, IComparable
 
     }
 
-    public void Dead()
+    public virtual void Dead()
     {
         this._hp = 0;
         this._initiative = 0;
         this._isAlive = false;
-        if(this._id >1) this._hero.RemoveObserver(this);
+        StepQueue._objectsDisplayed[this._id].SetActive(false);
+        this._hero.RemoveObserver(this);
     }
 
     public void LowMorale()
@@ -71,6 +70,53 @@ public abstract class Unit : MonoBehaviour, IObserver, IComparable
     public int CompareTo(object obj)
     {
         return -this._initiative.CompareTo(((Unit)obj)._initiative);
+    }
+
+    public override bool Equals(object obj)
+    {
+        return obj is Unit unit &&
+               base.Equals(obj) &&
+               name == unit.name &&
+               hideFlags == unit.hideFlags &&
+               EqualityComparer<Transform>.Default.Equals(transform, unit.transform) &&
+               EqualityComparer<GameObject>.Default.Equals(gameObject, unit.gameObject) &&
+               tag == unit.tag &&
+               enabled == unit.enabled &&
+               isActiveAndEnabled == unit.isActiveAndEnabled &&
+               useGUILayout == unit.useGUILayout &&
+               runInEditMode == unit.runInEditMode &&
+               _attackType == unit._attackType &&
+               _hp == unit._hp &&
+               _initiative == unit._initiative &&
+               _damage == unit._damage &&
+               _isAlive == unit._isAlive &&
+               EqualityComparer<IObservable>.Default.Equals(_hero, unit._hero) &&
+               _armyNumber == unit._armyNumber &&
+               _id == unit._id;
+    }
+
+    public override int GetHashCode()
+    {
+        int hashCode = -1245531986;
+        hashCode = hashCode * -1521134295 + base.GetHashCode();
+        hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(name);
+        hashCode = hashCode * -1521134295 + hideFlags.GetHashCode();
+        hashCode = hashCode * -1521134295 + EqualityComparer<Transform>.Default.GetHashCode(transform);
+        hashCode = hashCode * -1521134295 + EqualityComparer<GameObject>.Default.GetHashCode(gameObject);
+        hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(tag);
+        hashCode = hashCode * -1521134295 + enabled.GetHashCode();
+        hashCode = hashCode * -1521134295 + isActiveAndEnabled.GetHashCode();
+        hashCode = hashCode * -1521134295 + useGUILayout.GetHashCode();
+        hashCode = hashCode * -1521134295 + runInEditMode.GetHashCode();
+        hashCode = hashCode * -1521134295 + _attackType.GetHashCode();
+        hashCode = hashCode * -1521134295 + _hp.GetHashCode();
+        hashCode = hashCode * -1521134295 + _initiative.GetHashCode();
+        hashCode = hashCode * -1521134295 + _damage.GetHashCode();
+        hashCode = hashCode * -1521134295 + _isAlive.GetHashCode();
+        hashCode = hashCode * -1521134295 + EqualityComparer<IObservable>.Default.GetHashCode(_hero);
+        hashCode = hashCode * -1521134295 + _armyNumber.GetHashCode();
+        hashCode = hashCode * -1521134295 + _id.GetHashCode();
+        return hashCode;
     }
 
     public static bool operator ==(Unit unit1, Unit unit2)
