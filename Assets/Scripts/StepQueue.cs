@@ -118,7 +118,7 @@ public class StepQueue : MonoBehaviour
             Debug.Log("mouse");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
-            if (hit)
+            if (hit.collider != null)
             {
                 Unit chooseUnit = hit.transform.gameObject.GetComponent<Unit>();
                 List<Unit> targets = TargetsFind(_unitsSteps[_curUnit]);

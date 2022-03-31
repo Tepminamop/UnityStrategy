@@ -54,7 +54,7 @@ public abstract class Unit : MonoBehaviour, IObserver, IComparable
         this._initiative = 0;
         this._isAlive = false;
         StepQueue._objectsDisplayed[this._id].SetActive(false);
-        if (this._id > 1) this._hero.RemoveObserver(this);
+        this._hero.RemoveObserver(this);
     }
 
     public void LowMorale()
