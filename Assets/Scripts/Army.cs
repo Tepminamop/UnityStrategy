@@ -11,9 +11,9 @@ public class Army : Unit
         return this._units;
     }
 
-    public void AddUnit(Unit _unit)
+    public override void AddUnit(Unit unit)
     {
-        this._units.Add(_unit);
+        this._units.Add(unit);
     }
 
     public override void GetDamage(int damage)

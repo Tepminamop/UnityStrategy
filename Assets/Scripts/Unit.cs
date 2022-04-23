@@ -34,6 +34,11 @@ public abstract class Unit : MonoBehaviour, IObserver, IComparable
     [SerializeField] protected internal int _id;
     [SerializeField] protected static internal int _counter = 0;
 
+    public virtual void AddUnit(Unit unit) 
+    {
+
+    }
+
     public virtual void GetDamage(int damage)
     {
         this._hp -= damage;
