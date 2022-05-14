@@ -31,4 +31,17 @@ public sealed class HeroRanger : Hero
 	{
 		return instance;
 	}
+
+	public HeroRangerMemento Save()
+	{
+		return new HeroRangerMemento(instance);
+	}
+
+	public void Restore(HeroRangerMemento memento)
+	{
+		if (memento != null)
+		{
+			instance = memento.GetState();
+		}
+	}
 }

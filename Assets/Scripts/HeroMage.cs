@@ -31,4 +31,14 @@ public sealed class HeroMage : Hero
 	{
 		return instance;
 	}
+
+	public HeroMageMemento Save()
+    {
+		return new HeroMageMemento(GetInstance());
+    }
+
+	public void Restore(HeroMageMemento memento)
+    {
+		instance = memento.GetState();
+    }
 }
